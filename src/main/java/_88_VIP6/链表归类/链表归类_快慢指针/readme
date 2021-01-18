@@ -1,0 +1,48 @@
+环形链表1次走2
+
+_19_删除链表的倒数第N个节点
+1.slow=dummy
+  fast=dummy
+2.快慢指针:快指针先走 n+1 ; 快慢指针一起走
+
+        for (int i = 0; i < n+1; ++i) {  // 从0开始的，循环了n+1 次
+            fast = fast.next;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        slow.next = slow.next.next;
+
+
+
+
+_141_环形链表_LinkedListCycle
+1.slow=dummy
+  fast=dummy.next
+2.快慢指针:慢指针一次1步 快指针一次2步
+
+          while ( fast != null && fast.next != null){
+              if(slow == fast ) //相遇了
+                  return true;
+              slow=slow.next;
+              fast=fast.next.next;
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

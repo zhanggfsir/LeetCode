@@ -1,0 +1,5 @@
+1.有dummy
+           必然有dummy=head
+           必然有cur
+
+2.如果有 cur.next.next 则循环退出条件必然有 cur.next!=null

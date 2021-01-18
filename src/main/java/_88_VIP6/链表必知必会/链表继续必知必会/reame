@@ -1,0 +1,28 @@
+链表问题
+1. 如果 声明了虚指针，一般有dummy.next  因为 head 已经是cur.next了
+
+public class _203__18_offer删除链表的节点 {
+
+    public ListNode removeElements_(ListNode head, int val) {
+        // 1.声明 虚头指针 dummyhead，并让当前cur指针指向虚头指针 dummyhead
+        ListNode dummyHead = new ListNode(-1);
+        ListNode curr = dummyHead;
+        // 2.虚拟头结点next指针 指向 头指针
+        curr.next = head;
+
+        while (curr.next != null) { // head 已经是cur.next了
+            if (curr.next.val == val) {
+                // 删除cur.next
+                ListNode delNode=curr.next; // 删除结点一共分两步：a 存储当前要删除的结点
+                curr.next=delNode.next;     //                    b 删除确认要删除的结点
+            }
+            else
+                curr = curr.next;
+        }
+        return dummyHead.next;
+    }
+}-
+
+
+
+
