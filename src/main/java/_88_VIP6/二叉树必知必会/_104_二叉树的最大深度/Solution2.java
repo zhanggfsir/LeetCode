@@ -6,7 +6,7 @@ import javafx.util.Pair;
 
 import java.util.LinkedList;
 import java.util.Stack;
-
+import binTree.binaryTree.TreeNode;
 /// Non-recursive
 /// Time Complexity: O(n), where n is the nodes' number in the tree
 /// Space Complexity: O(h), where h is the height of the tree
@@ -22,17 +22,17 @@ class Solution2 {
     // BFS
     //BFS的实现原理就是一层层遍历，统计一下总共有多少层，我们来画个图分析一下。
     class Solution {
-        public int maxDepth(binTree.binaryTree.TreeNode root) {
+        public int maxDepth(TreeNode root) {
             if(root==null) {
                 return 0;
             }
-            LinkedList<binTree.binaryTree.TreeNode> queue = new LinkedList<binTree.binaryTree.TreeNode>();
+            LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
             queue.add(root);
             int count=0;
             while(queue.size()>0) {
                 int size = queue.size();  //获取当前队列的长度，这个长度相当于 当前这一层的节点个数             //每一层的个数
                 for(int i=0;i<size;++i) {
-                    binTree.binaryTree.TreeNode t = queue.remove();
+                    TreeNode t = queue.remove();
                     if(t.left!=null) {
                         queue.add(t.left);
                     }

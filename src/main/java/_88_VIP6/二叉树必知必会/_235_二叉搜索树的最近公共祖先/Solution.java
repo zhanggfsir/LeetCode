@@ -14,6 +14,8 @@ class Solution {
             return null;
         }
         //遍历左子树
+
+
         if(p.val<root.val && q.val<root.val){
             return lowestCommonAncestor3(root.left,p,q);
         }

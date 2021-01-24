@@ -213,7 +213,7 @@ public class _322_零钱兑换_my {
     ///////////////////////////// 动态规划 正解 ////////////////////////////
     /*
         注释版见3_2     假如有coins={5,20}  需要 凑够 20
-           1.第一个continue 过滤 凑够1-4
+           1.第一个continue 过滤 凑够 1-4
            2.第二个continue 过滤 凑够 6-9 11-14 16-19
               v >= min 继续过滤 凑够15 需要3，但是用20凑够20需要0
 
@@ -231,13 +231,15 @@ public class _322_零钱兑换_my {
         if (amount < 1 || coins == null || coins.length == 0)
             return -1;
         int[] dp = new int[amount + 1];     // dp[n] 凑够n分需要的最少硬币个数
-        for (int i = 1; i <= amount; i++) { // 从1开始 可以理解为凑够0分需要0枚硬币。实际上是 20分用20凑够 dp[20-20]需要dp[0]=0
+        for (int i = 1; i < dp.length; i++) { // 从1开始 可以理解为凑够0分需要0枚硬币。实际上是 20分用20凑够 dp[20-20]需要dp[0]=0
             int min = Integer.MAX_VALUE;
             for (int coin : coins) {
-                if (i < coin)
+                if (i < coin)   // 示例 i=1 faces={5,20,25}没有1，此时dp[1]=-1 dp[1~4]=-1
                     continue;
-                int v = dp[i - coin];
-                if (v < 0 || v >= min)  //v < 0 即没办法凑；v >= min已经有更优解
+                int v = dp[i - coin]; // 上一次凑够
+                // v < 0 即没办法凑； 即 dp[6~9] dp[11~14] dp[16~19] ;
+                // v >= min已经有更优解； 即 先用20凑够20需要0；用15凑够20还需要5 需要3
+                if (v < 0 || v >= min)
                     continue;
                 min = v;
             }

@@ -1,0 +1,14 @@
+
+1.  前者是以num[i]为结尾的... 即可以取到arr[i-1]，则长度为arr.length ; 后者凑够要amount，故要取到arr[amount],即长度为amount+1
+     int[] dp = new int[arr.length];  返回max          // _53_最大子序和 _300_最长上升子序列   _198_打家劫舍
+     int[] dp = new int[amount + 1];  返回dp[amount]   // _322_零钱兑换
+
+2.  dp类的loop是从 i=1 开始的 ；打家劫舍的loop是从 i=2 开始的
+        for (int i = 1; i < dp.length; i++) {}    //  _53_最大子序和 _300_最长上升子序列
+        for (int i = 2; i < dp.length; i++) {}    // _198_打家劫舍
+        for (int i = 1; i < dp.length; i++) {}    // _322_零钱兑换
+
+3.  _322_零钱兑换的 dp[0]=0
+
+
+
